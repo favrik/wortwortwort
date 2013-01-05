@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>selectProjectDialog</class>
- <widget class="QDialog" name="selectProjectDialog">
+ <class>SelectProjectDialog</class>
+ <widget class="QDialog" name="SelectProjectDialog">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>

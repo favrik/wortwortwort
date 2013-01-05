@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>selectTaskDialog</class>
- <widget class="QDialog" name="selectTaskDialog">
+ <class>SelectTaskDialog</class>
+ <widget class="QDialog" name="SelectTaskDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
