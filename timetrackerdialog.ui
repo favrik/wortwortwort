@@ -6,19 +6,59 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>516</width>
-    <height>365</height>
+    <width>594</width>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Wortwortwort</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="bottomMargin">
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Hours today:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Hours week:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QWidget" name="trackingTargetWidget" native="true">
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
+      <property name="leftMargin">
        <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
       </property>
       <property name="horizontalSpacing">
        <number>6</number>
@@ -40,7 +80,7 @@
       <item row="0" column="2">
        <widget class="QPushButton" name="changeProjectPushButton">
         <property name="text">
-         <string>Change</string>
+         <string>&amp;Change</string>
         </property>
        </widget>
       </item>
@@ -61,7 +101,7 @@
       <item row="1" column="2">
        <widget class="QPushButton" name="changeTaskPushButton">
         <property name="text">
-         <string>Change</string>
+         <string>C&amp;hange</string>
         </property>
        </widget>
       </item>
@@ -119,7 +159,10 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>Previous memos:</string>
+            <string>&amp;Previous memos:</string>
+           </property>
+           <property name="buddy">
+            <cstring>previousMemosComboBox</cstring>
            </property>
           </widget>
          </item>
@@ -144,7 +187,7 @@
       <item>
        <widget class="QPushButton" name="startButton">
         <property name="text">
-         <string>Start</string>
+         <string>&amp;Start</string>
         </property>
        </widget>
       </item>
@@ -167,7 +210,7 @@
       <item>
        <widget class="QPushButton" name="cancelButton">
         <property name="text">
-         <string>Cancel</string>
+         <string>&amp;Cancel</string>
         </property>
        </widget>
       </item>
@@ -177,5 +220,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>released()</signal>
+   <receiver>TimeTrackerDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>511</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
