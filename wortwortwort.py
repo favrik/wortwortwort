@@ -18,10 +18,11 @@ try:
 except ImportError:
     MAC = False
 
-class WortwortwortDialog(QWidget, ui_timetrackerdialog.Ui_TimeTrackerDialog):
+class WortwortwortMainDialog(QWidget,
+        ui_timetrackerdialog.Ui_TimeTrackerDialog):
 
     def __init__(self, parent=None):
-        super(WortwortwortDialog, self).__init__(parent)
+        super(WortwortwortMainDialog, self).__init__(parent)
         self.setupUi(self)
         self.center()
 
@@ -51,7 +52,7 @@ class WortwortwortDialog(QWidget, ui_timetrackerdialog.Ui_TimeTrackerDialog):
 
 
 app = QApplication(sys.argv)
-form = WortwortwortDialog()
-form.show()
+main_dialog = WortwortwortMainDialog()
+main_dialog.show()
 sys.exit(app.exec_())
  
