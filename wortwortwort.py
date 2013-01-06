@@ -10,7 +10,7 @@ from PyQt4.QtGui import (QApplication, QWidget, QDesktopWidget)
 import sys
 import ui_timetrackerdialog
 import selectproject
-import addproject
+
 
 MAC = True
 try:
@@ -41,15 +41,7 @@ class WortwortwortMainDialog(QWidget,
     def setProject(self):
         self.center()
 
-    @pyqtSignature("")
-    def on_AddProjectPushButton_clicked(self):
-        dialog = addproject.AddProject(self)
-        if dialog.exec_():
-            self.refreshProjectList()
-            
-    def refreshProjectList(self):
-        self.center()
-
+ 
 
 app = QApplication(sys.argv)
 main_dialog = WortwortwortMainDialog()
