@@ -16,6 +16,8 @@ class SelectProject(QDialog,
         super(SelectProject, self).__init__(parent)
         self.setupUi(self)
 
+        self.ProjectListView.addItems(['CodeBaseHQ'])
+
     @pyqtSignature("")
     def on_AddProjectPushButton_clicked(self):
         dialog = addproject.AddProject(self)
