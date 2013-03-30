@@ -24,6 +24,9 @@ class Project(Base):
 class ProjectType(Base):
     __tablename__ = 'project_types'
 
+    def __init__(self, name):
+        self.name = name
+
     def __repr__(self):
         return "<ProjectType('%s')>" % (self.name)
 
@@ -45,7 +48,7 @@ class Task(Base):
     def __repr__(self):
         return "<Task('%s', '%s')>" % (self.name, self.ticket)
 
-engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:///db.sqlite', echo=True)
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 
