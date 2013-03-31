@@ -4,12 +4,14 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from future_builtins import *
 
-from PyQt4.QtCore import (Qt, SIGNAL, pyqtSignature)
-from PyQt4.QtGui import (QApplication, QWidget, QDesktopWidget)
+from PyQt4.QtCore import Qt, SIGNAL, pyqtSignature
+from PyQt4.QtGui import QApplication, QWidget, QDesktopWidget
 
 import sys
 import ui_timetrackerdialog
 import selectproject
+
+from wortwortwort import orm
 
 
 MAC = True
@@ -25,6 +27,7 @@ class WortwortwortMainDialog(QWidget,
         super(WortwortwortMainDialog, self).__init__(parent)
         self.setupUi(self)
         self.center()
+        self.setup_database()
 
     def center(self):
         qr = self.frameGeometry()
@@ -32,9 +35,12 @@ class WortwortwortMainDialog(QWidget,
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
+    def setup_database(self):
+        self.orm = orm.Manager()
+
     @pyqtSignature("")
     def on_changeProjectPushButton_clicked(self):
-        dialog = selectproject.SelectProject(self)
+        dialog = selectproject.SelectProject(parent=self)
         if dialog.exec_():
             self.setProject()
        
