@@ -11,9 +11,6 @@ import sys
 import ui_timetrackerdialog
 import selectproject
 
-from wortwortwort import orm
-
-
 MAC = True
 try:
     from PyQt4.QtGui import qt_mac_set_native_menubar
@@ -27,16 +24,12 @@ class WortwortwortMainDialog(QWidget,
         super(WortwortwortMainDialog, self).__init__(parent)
         self.setupUi(self)
         self.center()
-        self.setup_database()
 
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
-
-    def setup_database(self):
-        self.orm = orm.Manager()
 
     @pyqtSignature("")
     def on_changeProjectPushButton_clicked(self):
@@ -47,10 +40,8 @@ class WortwortwortMainDialog(QWidget,
     def setProject(self):
         self.center()
 
- 
 
 app = QApplication(sys.argv)
 main_dialog = WortwortwortMainDialog()
 main_dialog.show()
 sys.exit(app.exec_())
- 

@@ -1,34 +1,12 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref, sessionmaker
+from sqlalchemy.orm import relationship, backref, sessionmaker, scoped_session
 
-class Manager:
-    def __init__(self):
-        self.engine = create_engine('sqlite:///db.sqlite', echo=True)
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
-        self.setup()
-
-    def setup(self):
-        if (not self.engine.dialect.has_table(
-            self.engine.connect(), App.__tablename__)):
-
-            Base.metadata.create_all(self.engine)
-            self.session.add_all(
-                [ProjectType(name='CodebaseHQ'), ProjectType(name='Custom')])
-            self.session.commit()
-
-    def project_types(self):
-        return self.session.query(ProjectType).all()
- 
-
-# Tables
 class Base(object):
     id = Column(Integer, primary_key=True)
     name = Column(String(250))
 
 Base = declarative_base(cls=Base)
-
 
 class App(Base):
     __tablename__ = 'wortwortwort'
@@ -45,6 +23,7 @@ class Project(Base):
 
     def __repr__(self):
        return "<Project('%s')>" % (self.name)
+
 
 class ProjectType(Base):
     __tablename__ = 'project_types'
@@ -71,5 +50,11 @@ class Task(Base):
     def __repr__(self):
         return "<Task('%s', '%s')>" % (self.name, self.ticket)
 
-
+# Initialize DB Session
+engine = create_engine('sqlite:///db.sqlite', echo=True)
+DBSession = scoped_session(sessionmaker(bind=engine))
+if not engine.dialect.has_table(engine.connect(), App.__tablename__):
+    Base.metadata.create_all(engine)
+    DBSession.add_all(
+        [ProjectType(name='CodebaseHQ'), ProjectType(name='Custom')])
 

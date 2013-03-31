@@ -11,6 +11,11 @@ import addproject
 
 from wortwortwort import projects
 
+from wortwortwort.orm import (
+    DBSession,
+    Project,
+    )
+
 class SelectProject(QDialog,
         ui_selectprojectdialog.Ui_SelectProjectDialog):
 
@@ -18,12 +23,13 @@ class SelectProject(QDialog,
         super(SelectProject, self).__init__(parent)
         self.parent = parent
         self.setupUi(self)
-#        self.ProjectListView.setModel(
-#            projects.ListModel(parent.orm.project_types()))
+        self.ProjectListView.setModel(
+            projects.ListModel(DBSession.query(Project).all()))
+
 
     @pyqtSignature("")
     def on_AddProjectPushButton_clicked(self):
-        dialog = addproject.AddProject(self.parent.orm.project_types(), parent=self)
+        dialog = addproject.AddProject(parent=self)
         if dialog.exec_():
             self.refreshProjectList()
 
